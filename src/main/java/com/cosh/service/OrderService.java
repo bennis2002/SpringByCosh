@@ -1,11 +1,10 @@
 package com.cosh.service;
 
-
 import com.spring.Component;
 import com.spring.Scope;
 
-@Component("userService")
+@Component("orderService")
 @Scope()
-public class userService {
+public class OrderService {
 
 }
