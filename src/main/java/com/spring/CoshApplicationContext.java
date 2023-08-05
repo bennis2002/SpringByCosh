@@ -61,7 +61,7 @@ public class CoshApplicationContext {
                 }
             }
 
-            // 回调Bean
+            // 回调Bean（Aware回调）
             if (instance instanceof BeanNameAware) {
                 ((BeanNameAware) instance).setBeanName(beanName);
             }
@@ -82,8 +82,6 @@ public class CoshApplicationContext {
             }
             //BeanPostProcessor --> Bean的后置处理器
             //在建立Bean的过程中，执行语句
-
-
 
             return instance;
         } catch (InstantiationException e) {
@@ -172,6 +170,7 @@ public class CoshApplicationContext {
                     String beanName = declaredAnnotation.value();
                     if (beanName.equals("")) {
                         beanName = f.getName().toLowerCase().substring(0,1) + f.getName().substring(1);
+                        beanName = beanName.replace(".class", "").replace("Impl","");
                     }
                     //生成一个BeanDefinition对象
                     BeanDefinition beanDefinition = new BeanDefinition();
